@@ -18,11 +18,11 @@ using namespace std;
 // Class Banker definition
 class Banker{
 	private:
-		vector<int> seq;
+		vector <int> seq;
 		int Need [5][3];
-		int Alocation [5][3];
+		int Allocation [5][3];
 		int Max [5][3];
-		int Av [5][3];
+		int Available [5][3];
 		int np, nr, i, x, j, k, a;
 	public:
 		void GetVector()
@@ -33,7 +33,7 @@ class Banker{
 		    	for (j = 0; j < 3; j++)
 		        {
 		            cin >> x;
-		            Alocation[i][j] = x;
+		            Allocation[i][j] = x;
 		        }
 		    }
 		 
@@ -44,7 +44,7 @@ class Banker{
 		        {
 		            cin >> x;
 		            Max[i][j] = x;
-		            Need[i][j] = Max[i][j] - Alocation[i][j];
+		            Need[i][j] = Max[i][j] - Allocation[i][j];
 		        }
 		    }
 		    cout << "Need matrix." << endl;
@@ -60,7 +60,7 @@ class Banker{
 		    for (j = 0; j < 2; j++)
 		    {
 		        cin >> x;
-		        Av[0][j] = x;
+		        Available[0][j] = x;
 		    }	
 		}
 		void Request()
@@ -79,18 +79,18 @@ class Banker{
 		        		for (int j = 0; j < 2; j++)
 		            {
 		                cin >> x;
-		                Av[0][j] = x;
+		                Available[0][j] = x;
 		        		
 		        		}
-		        		if((req[3]<=Need[5][3])&&(req[3]<=Av[5][3]))
+		        		if((req[3]<=Need[5][3])&&(req[3]<=Available[5][3]))
 		        			 for (i = 0; i < 5; i++)
 		            {
 		                for (int j = 0; j < 3; j++)
 		                {
 		                    
-		                    Av[i][j] = Av[i][j] - req[i];
+		                    Available[i][j] = Available[i][j] - req[i];
 		        			Need[i][j]=Need[i][j]-req[i];
-		        			Alocation[i][j]=Alocation[i][j]+req[i];
+		        			Allocation[i][j]=Allocation[i][j]+req[i];
 		                }
 		            }
 		        		else
@@ -122,9 +122,9 @@ class Banker{
 		          {
 		              for (j = 0; j < 3; j++)
 		              {
-		                  if ((Need[i][j] > Av[i][j]))
+		                  if ((Need[i][j] > Available[i][j]))
 		                     test = false;
-		                  if ((Need[i][j] <= Av[i][j]))
+		                  if ((Need[i][j] <= Available[i][j]))
 		                     test = true;
 		              }
 		              if (test == true) 
@@ -132,7 +132,7 @@ class Banker{
 		                     seq.push_back(i);
 		                     for (k = 0; k < 3; k++)
 		                     {
-		                         Av[i][k] = Av[i][k] + Alocation[i][k];
+		                         Available[i][k] = Available[i][k] + Allocation[i][k];
 		                     }
 		                      flag[i] = true;
 		              } 
