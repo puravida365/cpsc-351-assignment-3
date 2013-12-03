@@ -29,17 +29,20 @@ class Banker{
 		int Need [5][3];
 		// declarations
 		int customer_num;
-		int request[];
-		int processes[];
-		bool successful;
+		//int request[10];
+		//int processes[10];
+		bool successful = false;
 
 		int np, nr, i, x, j, k, a;
 	public:
 		Banker(char **argv, int argc){
-
+			for(int i = 0; i < argc; i++)
+			{
+				cout << argv[i] << endl;
+			}
 		}
-		void request_resources(){
-			if{// if successful return 0; request has been granted
+		bool request_resources(){
+			if(true){// if successful return 0; request has been granted
 				return false;
 			}
 			else{
@@ -47,8 +50,8 @@ class Banker{
 				return -1;
 			}
 		}
-		void release_resources(){
-			if{// if successful return 0; request has been granted
+		bool release_resources(){
+			if(true){// if successful return 0; request has been granted
 				return false;
 			}
 			else{
@@ -199,8 +202,7 @@ class Banker{
 	Example program run from command line: ./a.out 10 5 7
 */
 int main( int argc, char* argv[] )
-	
-
+{
 	// create Banker Object
 	Banker A(argv, argc);
 	// class methods calls
