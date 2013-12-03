@@ -5,7 +5,7 @@
 	Description: Multithreaded program. 
 				 The banker will grant a request only if it leaves the system in a safe state. 
 				 A request that leaves the system in an unsafe state will be denied. 
-	Group Members: Harry Mora, Robert Rivas, Jennifer Peterson
+	Group Members: Harry Mora, Robert Rivas
 	Date: 12/03/13
 */
 
@@ -30,10 +30,14 @@ class Banker{
 		// declarations
 		int customer_num;
 		int request[];
+		int processes[];
 		bool successful;
 
 		int np, nr, i, x, j, k, a;
 	public:
+		Banker(char **argv, int argc){
+
+		}
 		void request_resources(){
 			if{// if successful return 0; request has been granted
 				return false;
@@ -51,6 +55,9 @@ class Banker{
 				// if unsuccessful return -1
 				return -1;
 			}
+		}
+		void mutexLock(){
+			// mechanism to avoid race conditions 
 		}
 		void GetVector()
 		{
@@ -93,16 +100,15 @@ class Banker{
 		void Request()
 		{
 			int P;
-			cout<<"Customer number 0-5"<<" "<<"Enter the request number "<<endl;
+			cout<<" Customer number 0-5" << " " <<"Enter the request number "<<endl;
 			cin >>P;
 			switch (P)
 		    {
 		        case 1 : {
-		        	cout<<"You have entered customer number 1"<<
-		        			 " "<<"Please enter request number"<<endl;
+		        	cout << "You have entered customer number 1" << " " << "Please enter request number" <<endl;
 		        		int x,i;
 		        		int req[3];
-		        		cin>>x;
+		        		cin >> x;
 		        		for (int j = 0; j < 2; j++)
 		            {
 		                cin >> x;
@@ -196,7 +202,7 @@ int main( int argc, char* argv[] )
 	
 
 	// create Banker Object
-	Banker A;
+	Banker A(argv, argc);
 	// class methods calls
 	//A.GetVector();
 	//A.Request();
