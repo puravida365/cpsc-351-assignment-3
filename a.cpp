@@ -185,8 +185,16 @@ class Banker{
 		    cout << endl;
 		}
 };
-// end of class Banker
+/*
+	Main function. 
+	Accepts arguements from command line.
+	Number of resources for each type should be passed
+	Example: 10 instances of 1st type, 5 of second type, 7 of third type
+	Example program run from command line: ./a.out 10 5 7
+*/
 int main( int argc, char* argv[] )
+	
+
 	// create Banker Object
 	Banker A;
 	// class methods calls
