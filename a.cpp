@@ -19,12 +19,39 @@ using namespace std;
 class Banker{
 	private:
 		vector <int> seq;
-		int Need [5][3];
-		int Allocation [5][3];
-		int Max [5][3];
+		/* the available amount of each resource */
 		int Available [5][3];
+		/* the maximum demand of each customer */
+		int Max [5][3];
+		/* the amount currently allocated to each customer */
+		int Allocation [5][3];
+		/* the remaining need of each customer */
+		int Need [5][3];
+		// declarations
+		int customer_num;
+		int request[];
+		bool successful;
+
 		int np, nr, i, x, j, k, a;
 	public:
+		void request_resources(){
+			if{// if successful return 0; request has been granted
+				return false;
+			}
+			else{
+				// if unsuccessful return -1
+				return -1;
+			}
+		}
+		void release_resources(){
+			if{// if successful return 0; request has been granted
+				return false;
+			}
+			else{
+				// if unsuccessful return -1
+				return -1;
+			}
+		}
 		void GetVector()
 		{
 		    cout << "Enter the allocation matrix." << endl;
@@ -159,11 +186,11 @@ class Banker{
 		}
 };
 // end of class Banker
-int main(){
+int main( int argc, char* argv[] )
 	// create Banker Object
 	Banker A;
 	// class methods calls
-	A.GetVector();
+	//A.GetVector();
 	//A.Request();
 	//A.FindPath();
 	return(0);
