@@ -6,7 +6,7 @@
 				 The banker will grant a request only if it leaves the system in a safe state. 
 				 A request that leaves the system in an unsafe state will be denied. 
 	Group Members: Harry Mora, Robert Rivas
-	Date: 12/03/13
+	Date: 12/04/13
 */
 
 #include <iostream>
@@ -28,18 +28,18 @@ class Banker{
 		int r; // number of resources
 
 		/* the available amount of each resource */
-		int Available [5][3];
+		int Available[5][3];
 
-		/* the maximum demand of each customer */
-		int Max [5][3];
+		/* the maximum demand of each process */
+		int Max[5][3];
 
-		/* the amount currently allocated to each customer */
-		int Allocation [5][3];
+		/* defines the number resources of each type currently allocated to each process*/
+		int Allocation[5][3];
 
-		/* the remaining need of each customer */
-		int Need [5][3];
+		/* the remaining need of each process */
+		int Need[5][3];
 
-		int Work [5][3];
+		int Work[5][3];
 		int Finish[5];
 		
 		bool successful = false;
@@ -47,11 +47,13 @@ class Banker{
 		int i, x, j, k, a;
 	public:
 		Banker(char **argv, int argc){
+			// Initialize resources array
 			for(int m = 0; m < argc; m++)
 			{
 				resources[m] = atoi(argv[m]);
 			}
-
+			// initialize maximum array
+			GetVector();
 		}
 		void GetVector()
 		{
@@ -153,6 +155,15 @@ class Banker{
 		void mutexLock(){
 			// mechanism to avoid race conditions 
 		}
+		void MaxInit(){
+			for(int k = 0; k < 5; k++)
+			{
+				for(int j = 0; j < 3; j++)
+				{
+					Max[k][j] = 10;
+				}
+			}
+		}
 };
 /*
 	Main function. 
@@ -166,7 +177,7 @@ int main( int argc, char* argv[] )
 	// create Banker Object
 	Banker A(argv, argc);
 	// class methods calls
-	A.GetVector();
+	//A.GetVector();
 	//A.Request();
 	//A.FindPath();
 	return(0);
@@ -175,5 +186,44 @@ int main( int argc, char* argv[] )
 /*
 	I/O:
 
+	$ ./a.out 10 5 7
+	Enter Allocation matrix:
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	1
+	Enter Max matrix:
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	2
+	Need matrix:
+	1 1 1 
+	1 1 1 
+	1 1 1 
+	1 1 1 
+	1 1 1 
 
 */

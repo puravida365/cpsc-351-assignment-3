@@ -20,7 +20,7 @@ void printResources(){
 			switch (P)
 		    {
 		        case 1 : {
-		        	cout << "You have entered customer number 1" << " " << "Please enter request number" <<endl;
+		        	cout << "You have entered customer number 1" << " " << "Please enter request number" << endl;
 		        		int x,i;
 		        		int req[3];
 		        		cin >> x;
@@ -37,7 +37,7 @@ void printResources(){
 			        			}
 			            	}
 		        		else
-		        			cout<<"error"<<endl;
+		        			cout << "error" << endl;
 		        		};
 		        break;
 		        case 2 : cout << "Bravo";
@@ -100,3 +100,20 @@ void printResources(){
 		        cout << "P" << seq[i] << " -> ";
 		    cout << endl;
 		}
+
+
+
+		/* the available amount of each resource */
+		int Available[];
+
+		/* the maximum demand of each process */
+		int Max[][];
+
+		/* defines the number resources of each type currently allocated to each process*/
+		int Allocation[][];
+
+		/* the remaining need of each process */
+		int Need[][];
+
+		int Work[][];
+		int Finish[];
